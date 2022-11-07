@@ -10,6 +10,12 @@ const LEFT_LEG = <div className={style.left_leg} />;
 export function HangmanDrawing() {
   return (
     <div className={style.mainDiv}>
+      {HEAD}
+      {BODY}
+      {RIGHT_ARM}
+      {LEFT_ARM}
+      {RIGHT_LEG}
+      {LEFT_LEG}
       <div className={style.topBarMini} />
       <div className={style.topBar} />
       <div className={style.khamba} />
