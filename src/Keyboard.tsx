@@ -1,4 +1,4 @@
-import style from "./Keyboard.module.css";
+import styles from "./Keyboard.module.css";
 
 const KEYS = [
   "a",
@@ -29,22 +29,43 @@ const KEYS = [
   "z",
 ];
 
-export function Keyboard() {
+type KeyboardProps = {
+  disabled?: boolean;
+  activeLetters: string[];
+  inactiveLetters: string[];
+  addGuessedLetter: (letter: string) => void;
+};
+
+export function Keyboard({
+  activeLetters,
+  inactiveLetters,
+  addGuessedLetter,
+  disabled = false,
+}: KeyboardProps) {
   return (
     <div
       style={{
-        alignSelf: "stretch",
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(75px, 1fr))",
+        gap: ".5rem",
       }}
     >
-      <div className={style.keyboard}>
-        {KEYS.map((key) => {
-          return (
-            <button key={key} className={style.key}>
-              {key}
-            </button>
-          );
-        })}
-      </div>
+      {KEYS.map((key) => {
+        const isActive = activeLetters.includes(key);
+        const isInactive = inactiveLetters.includes(key);
+        return (
+          <button
+            onClick={() => addGuessedLetter(key)}
+            className={`${styles.btn} ${isActive ? styles.active : ""} ${
+              isInactive ? styles.inactive : ""
+            }`}
+            disabled={isInactive || isActive || disabled}
+            key={key}
+          >
+            {key}
+          </button>
+        );
+      })}
     </div>
   );
 }

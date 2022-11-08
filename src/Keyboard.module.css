@@ -1,18 +1,13 @@
-.keyboard {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
-  gap: 0.5rem;
-}
-.key {
+.btn {
   width: 100%;
   border: 3px solid black;
-  background-color: none;
-  aspect-ratio: 1/1;
-  font-size: 2.2rem;
+  background: none;
+  aspect-ratio: 1 / 1;
+  font-size: 2.5rem;
   text-transform: uppercase;
+  padding: 0.5rem;
   font-weight: bold;
   cursor: pointer;
-  padding: 0.5em;
   color: black;
 }
 
@@ -25,7 +20,7 @@
   opacity: 0.3;
 }
 
-.key:hover:not(:disabled),
-.key:focus:not(:disabled) {
+.btn:hover:not(:disabled),
+.btn:focus:not(:disabled) {
   background-color: hsl(200, 100%, 75%);
 }
